@@ -10,6 +10,7 @@ class Plank {
         this.context.fillRect(this.x,this.y,100,20)
     }
     move(){
+
         document.addEventListener('keydown',(e)=>{
             if(e.which==37){
                 this.x-=10
@@ -19,4 +20,3 @@ class Plank {
         })
     }
 }
-let plank=new Plank()

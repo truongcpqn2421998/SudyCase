@@ -4,9 +4,9 @@ class game {
         this.context = null
         this.init()
         this.loop()
-        this.time = 0
         this.count()
-        this.level()
+        this.change()
+        this.time = 0
     }
 
     init() {
@@ -14,6 +14,10 @@ class game {
         this.context = this.canvas.getContext('2d')
         this.plank = new Plank(this.context)
         this.ball = new ball(this.context)
+        this.secret1= new secret(this.context)
+        this.secret2= new secret(this.context)
+        this.enemy1=new enemy(this.context,0,250)
+        this.enemy2=new enemy(this.context,300,100)
     }
 
     draw() {
@@ -21,35 +25,70 @@ class game {
         this.context.fillText('point: ' + this.time, 10, 20, 100)
         this.plank.draw()
         this.ball.draw()
+        this.secret1.draw()
+        this.secret2.draw()
+        this.enemy1.draw()
+        this.enemy2.draw()
     }
 
     update() {
         this.ball.update()
+        this.enemy1.update()
+        this.enemy2.update()
     }
 
     loop() {
         this.draw()
         this.update()
-        setTimeout(() => this.loop(), 60)
+        this.Touch()
+        setTimeout(() => this.loop(), 30)
     }
 
     count() {
         this.time += 1
-        this.level()
         setTimeout(() => this.count(), 1000)
     }
+    change(){
+        this.secret1.random()
+        this.secret2.random()
+        setTimeout(()=>this.change(),4000)
+    }
+    Touch(){
+        let T1x=Math.abs(this.ball.x-this.secret1.x)
+        let T1y=Math.abs(this.ball.y-this.secret1.y)
+        if (Math.sqrt(T1x*T1x+T1y*T1y)<=20){
+            this.ball.random();
+            this.secret1.random()
+        }
+        let T2x=Math.abs(this.ball.x-this.secret2.x)
+        let T2y=Math.abs(this.ball.y-this.secret2.y)
+        if (Math.sqrt(T2x*T2x+T2y*T2y)<=20){
+            this.ball.random();
+            this.secret2.random()
+        }
+        if(this.ball.y>=(this.enemy1.y-10)&&this.ball.y<=this.enemy1.y+30){
+            if(this.ball.x>=this.enemy1.x-10&&this.ball.x<=this.enemy1.x+110){
+                this.ball.dy=-this.ball.dy
 
-    level() {
-        if (this.time === 5) {
-            this.ball.level()
+            }
         }
-        if (this.time === 30) {
-            this.ball.level()
+        if(this.ball.y>=(this.enemy2.y-10)&&this.ball.y<=this.enemy2.y+30){
+            if(this.ball.x>=this.enemy2.x-10&&this.ball.x<=this.enemy2.x+110){
+                this.ball.dy=-this.ball.dy
+
+            }
         }
-        if (this.time === 60) {
-            this.ball.level()
+        if(this.ball.y>=(this.plank.y-10)&&this.ball.y<=this.plank.y+10){
+            if(this.ball.x>=this.plank.x-10&&this.ball.x<=this.plank.x+90){
+                this.ball.dy=-this.ball.dy
+
+            }
         }
     }
 }
+function play(){
+    let g=new game()
+}
+function reset(){
 
-let g=new game()
+}

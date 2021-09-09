@@ -3,7 +3,7 @@ class ball{
         this.context = context
         this.x=200
         this.y=200
-        this.speed=5
+        this.speed=10
         this.dx=0
         this.dy=0
         this.random()
@@ -23,12 +23,7 @@ class ball{
         if(this.y+this.dy<10){
             this.dy=-this.dy
         }
-        if(this.y>plank.y-20){
-            if(this.x>plank.x&&this.x<plank.x+100){
-                this.dy=-this.dy
-            }
-        }
-        if(this.y>640){
+        if(this.y>640&&this.y<650){
             alert('You Lose')
         }
     }
