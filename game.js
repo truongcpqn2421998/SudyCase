@@ -59,6 +59,7 @@ class game {
         if (Math.sqrt(T1x*T1x+T1y*T1y)<=20){
             this.ball.random();
             this.secret1.random()
+
         }
         let T2x=Math.abs(this.ball.x-this.secret2.x)
         let T2y=Math.abs(this.ball.y-this.secret2.y)
@@ -69,26 +70,40 @@ class game {
         if(this.ball.y>=(this.enemy1.y-10)&&this.ball.y<=this.enemy1.y+30){
             if(this.ball.x>=this.enemy1.x-10&&this.ball.x<=this.enemy1.x+110){
                 this.ball.dy=-this.ball.dy
+                this.sound_ball()
 
             }
         }
         if(this.ball.y>=(this.enemy2.y-10)&&this.ball.y<=this.enemy2.y+30){
             if(this.ball.x>=this.enemy2.x-10&&this.ball.x<=this.enemy2.x+110){
                 this.ball.dy=-this.ball.dy
+                this.sound_ball()
+
 
             }
         }
         if(this.ball.y>=(this.plank.y-10)&&this.ball.y<=this.plank.y+10){
             if(this.ball.x>=this.plank.x-10&&this.ball.x<=this.plank.x+90){
                 this.ball.dy=-this.ball.dy
+                this.sound_ball()
+
 
             }
         }
     }
+    sound_ball(){
+        let song=new Audio();
+        song.src='ball.wav';
+        song.volume=0.1
+        song.play()
+    }
 }
 function play(){
     let g=new game()
+    sound_game()
 }
-function reset(){
-
+function sound_game(){
+    let Song=new Audio('sound.mp3')
+    Song.volume=0.5
+    Song.play()
 }

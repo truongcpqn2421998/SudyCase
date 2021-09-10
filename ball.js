@@ -2,7 +2,7 @@ class ball{
     constructor(context) {
         this.context = context
         this.x=200
-        this.y=200
+        this.y=50
         this.speed=10
         this.dx=0
         this.dy=0
