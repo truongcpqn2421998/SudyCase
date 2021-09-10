@@ -2,10 +2,6 @@ class game {
     constructor() {
         this.canvas = null
         this.context = null
-        this.init()
-        this.loop()
-        this.count()
-        this.change()
         this.time = 0
     }
 
@@ -41,6 +37,7 @@ class game {
         this.draw()
         this.update()
         this.Touch()
+        this.game_over()
         setTimeout(() => this.loop(), 30)
     }
 
@@ -71,15 +68,12 @@ class game {
             if(this.ball.x>=this.enemy1.x-10&&this.ball.x<=this.enemy1.x+110){
                 this.ball.dy=-this.ball.dy
                 this.sound_ball()
-
             }
         }
         if(this.ball.y>=(this.enemy2.y-10)&&this.ball.y<=this.enemy2.y+30){
             if(this.ball.x>=this.enemy2.x-10&&this.ball.x<=this.enemy2.x+110){
                 this.ball.dy=-this.ball.dy
                 this.sound_ball()
-
-
             }
         }
         if(this.ball.y>=(this.plank.y-10)&&this.ball.y<=this.plank.y+10){
@@ -91,6 +85,20 @@ class game {
             }
         }
     }
+    game_over(){
+        if(this.ball.y>640&&this.ball.y<650){
+            alert('You Lose')
+        }
+        if(this.ball.y>645){
+            this.time=0
+        }
+    }
+    reset_ball(){
+        this.ball.x=200;
+        this.ball.y=50
+        this.time=0
+        this.ball.random()
+    }
     sound_ball(){
         let song=new Audio();
         song.src='ball.wav';
@@ -98,9 +106,16 @@ class game {
         song.play()
     }
 }
+let g=new game()
 function play(){
-    let g=new game()
+    g.init()
+    g.loop()
+    g.count()
+    g.change()
     sound_game()
+}
+function reset(){
+    g.reset_ball()
 }
 function sound_game(){
     let Song=new Audio('sound.mp3')

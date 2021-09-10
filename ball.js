@@ -23,9 +23,6 @@ class ball{
         if(this.y+this.dy<10){
             this.dy=-this.dy
         }
-        if(this.y>640&&this.y<650){
-            alert('You Lose')
-        }
     }
     random(){
         let T=Math.floor(Math.random() * ((this.speed - 1) - 1)) + 1
@@ -42,8 +39,5 @@ class ball{
                 this.dy = -Math.sqrt(Math.pow(this.speed,2)-Math.pow(this.dx,2))
             }
         }
-    level(){
-        this.dx*=2
-        this.dy*=2
-    }
+
 }
