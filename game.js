@@ -38,7 +38,7 @@ class game {
         this.update()
         this.Touch()
         this.game_over()
-        setTimeout(() => this.loop(), 30)
+        setTimeout(() => this.loop(),30 )
     }
 
     count() {
@@ -119,6 +119,6 @@ function reset(){
 }
 function sound_game(){
     let Song=new Audio('sound.mp3')
-    Song.volume=0.2
+    Song.volume=0.1
     Song.play()
 }

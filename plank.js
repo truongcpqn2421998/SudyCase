@@ -13,9 +13,9 @@ class Plank {
 
         document.addEventListener('keydown',(e)=>{
             if(e.which==37){
-                this.x-=10
+                this.x-=15
             }else if(e.which==39){
-                this.x+=10
+                this.x+=15
             }
         })
     }
