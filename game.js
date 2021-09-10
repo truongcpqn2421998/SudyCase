@@ -104,6 +104,6 @@ function play(){
 }
 function sound_game(){
     let Song=new Audio('sound.mp3')
-    Song.volume=0.5
+    Song.volume=0.2
     Song.play()
 }
