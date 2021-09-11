@@ -102,7 +102,7 @@ class game {
     sound_ball(){
         let song=new Audio();
         song.src='ball.wav';
-        song.volume=0.1
+        // song.volume=0.1
         song.play()
     }
 }
@@ -119,6 +119,6 @@ function reset(){
 }
 function sound_game(){
     let Song=new Audio('sound.mp3')
-    Song.volume=0.1
+    // Song.volume=0.1
     Song.play()
 }
